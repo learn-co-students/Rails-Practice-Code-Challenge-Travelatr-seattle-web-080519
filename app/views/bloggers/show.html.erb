@@ -1,0 +1,20 @@
+<h3>Blogger's Profile Page</h3>
+
+<%= link_to "Home", application_index_path %></br></br>
+<%= link_to "See all Bloggers", bloggers_path %></br></br>
+
+<p>
+  Name: <%= @blogger.name %>
+</p>
+<p>
+  Bio: <%= @blogger.bio %>
+</p>
+<p>
+  Age: <%= @blogger.age %>
+</p>
+<p>
+  Total Likes: <%= @blogger.total_likes %>
+</p>
+<p>
+  Featured Post: <%= link_to "#{@blogger.most_liked.title}", post_path(@blogger.most_liked.id)%>
+</p>

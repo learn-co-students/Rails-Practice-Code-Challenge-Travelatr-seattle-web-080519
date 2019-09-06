@@ -1,0 +1,11 @@
+<h3>Bloggers</h3>
+
+<%= link_to "Home", application_index_path %></br></br>
+<%= link_to "Create a new blogger!", new_blogger_path %></br></br>
+
+<% @bloggers.each do |blogger| %>
+    Name: <%= link_to "#{blogger.name}", blogger_path(blogger.id) %></br>
+    Bio: <%= blogger.bio %> </br>
+    Age: <%= blogger.age %> </br>
+    Posts: <%= blogger.posts.count %> </br></br>
+<% end %>
