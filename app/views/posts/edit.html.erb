@@ -1,0 +1,55 @@
+<h1>Edit Your Blog Post</h1>
+<% if @post.errors.any? %>
+    <div id="error_explanation">
+        <h2>Errors:</h2>
+        <ul>
+            <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @post do |f| %>
+    <div>
+        Blogger: <select name="blogger_id">
+            <% Blogger.all.each do |blogger| %>
+                <% if @post.blogger.id == blogger.id %>
+                    <option selected value="<%= blogger.id %>">
+                        <%= blogger.name %>
+                    </option>
+                <% else %>
+                    <option value = "<%=blogger.id %>">
+                        <%= blogger.name %>
+                    </option>
+                <% end %>
+            <% end %>
+        </select>
+    </div>
+
+    <div>
+        Destination: <select name="destination_id">
+            <% Destination.all.each do |destination| %>
+                <% if @post.destination.id == destination.id %>
+                    <option selected value="<%= destination.id %>">
+                        <%= destination.name %>
+                    </option>
+                <% else %>
+                    <option value="<%= destination.id %>">
+                        <%= destination.name %>
+                    </option>
+                <% end %>
+            <% end %>
+        </select>
+    </div>
+    
+    <div>
+        Title: <%= f.text_field :title %>
+    </div>
+    <div>
+        Content: <%= f.text_area :content %>
+    </div>
+
+      <%= f.submit %>
+
+<% end %>

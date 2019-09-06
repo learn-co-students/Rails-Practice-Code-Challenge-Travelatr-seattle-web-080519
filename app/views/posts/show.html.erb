@@ -1,0 +1,31 @@
+<h3>Post</h3>
+
+<%= link_to "Home", application_index_path %></br></br>
+<%= link_to "See all posts", posts_path %></br></br>
+
+
+<p>
+  Blogger Name: <%= link_to "#{@blogger.name}", blogger_path(@blogger.id) %>
+</p>
+<p>
+  City: <%= link_to "#{@destination.name}", destination_path(@destination.id) %>
+</p>
+<p>
+  Country: <%= @destination.country %>
+</p>
+
+<p>
+  Likes: <%= @post.likes %>
+</p>
+
+<p>
+  Title: <%= @post.title %>
+</p>
+<p>
+  Content: <%= @post.content %>
+  
+</p>
+
+
+<%= button_to 'Like', "/posts/#{@post.id}/likes", method: :get %>
+

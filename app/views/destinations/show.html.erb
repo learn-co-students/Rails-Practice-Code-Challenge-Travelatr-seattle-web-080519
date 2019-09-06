@@ -1,0 +1,32 @@
+<h3>Destination Profile</h3>
+
+<%= link_to "Home", application_index_path %></br></br>
+<%= link_to "See all destinations", destinations_path %></br></br>
+
+City: <%= @destination.name %> </br>
+Country: <%= @destination.country %></br>
+
+
+<div>
+    <h4>Recent Posts About this Destination</h4>
+
+    <% @destination.posts.recent_posts.first(5).each do |post| %>
+        <%= link_to "#{post.title}", post_path(post.id) %></br>
+    <% end %>
+
+</div>
+
+<div>
+    <h4>Featured Post</h4>
+    jk. not yet.
+</div>
+
+
+<div>
+    <h4>Average Age of Bloggers at this Destination</h4>
+    <%= @destination.ave_age %>
+</div>
+
+<p>
+  Featured Post: <%= link_to "#{@destination.most_liked.title}", post_path(@destination.most_liked.id)%>
+</p>

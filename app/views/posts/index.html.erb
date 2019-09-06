@@ -1,0 +1,11 @@
+<h3>Posts</h3>
+
+<%= link_to "Home", application_index_path %></br></br>
+<%= link_to "Create a new post!", new_post_path %></br></br>
+
+<% @posts.each do |post| %>
+    Title: <%= link_to "#{post.title}", post_path(post.id) %> </br>
+    Blogger: <%= post.blogger.name %> </br>
+    City: <%= post.destination.name %> </br>
+    Country: <%= post.destination.country %> </br></br>
+<% end %>

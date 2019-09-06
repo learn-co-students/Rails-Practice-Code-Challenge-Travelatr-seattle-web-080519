@@ -1,0 +1,45 @@
+<h3>I'm the post > new page.</h3>
+
+<h1>Write a New Blog Post</h1>
+<% if @post.errors.any? %>
+    <div id="error_explanation">
+        <h2>Errors:</h2>
+        <ul>
+            <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @post do |f| %>
+    <div>
+        Blogger: <select name="blogger_id">
+            <% Blogger.all.each do |author| %>
+                <option value="<%= author.id %>">
+                    <%= author.name %>
+                </option>
+            <% end %>
+        </select>
+    </div>
+
+    <div>
+        Destination: <select name="destination_id">
+            <% Destination.all.each do |location| %>
+                <option value="<%= location.id %>">
+                    <%= location.name %>
+                </option>
+            <% end %>
+        </select>
+    </div>
+    
+    <div>
+        Title: <%= f.text_field :title %>
+    </div>
+    <div>
+        Content: <%= f.text_area :content %>
+    </div>
+
+      <%= f.submit %>
+
+<% end %>
